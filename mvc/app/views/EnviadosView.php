@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody>
-            <?php for($i = 0; $i < count($pagos); $i++){ ?>
+            <?php for($i = 0; $i < count($pago); $i++){ ?>
                 <tr>
                     <td><?=$i;?></td>
-                    <td><?=$pagos[$i];?></td>
-                    <td><?=($capital - $pagos[$i]);?></td>
+                    <td><?=$pago[$i];?></td>
+                    <td><?=($capital - $pago[$i]);?></td>
                 </tr>
             <?=}?>
         </tbody>
