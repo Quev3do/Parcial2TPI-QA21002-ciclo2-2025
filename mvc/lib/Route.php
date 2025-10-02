@@ -7,11 +7,11 @@ class Route{
 
     private static $URL_BASE = "/mvc/public";
 
-    public function get($uri, $callback){
+    public static function get($uri, $callback){
         self::$routes['GET'][self::$URL_BASE.$uri] = $callback;
     }
 
-    public function post($uri, $callback){
+    public static function post($uri, $callback){
         self::$routes['POST'][self::$URL_BASE.$uri] = $callback;
     }
 
