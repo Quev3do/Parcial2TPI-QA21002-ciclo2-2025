@@ -6,7 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Capital: <?=$capital?></h1>
-    <h2>Pago: <?=$pago?></h2>
+    <h1>Name: <?=$name?></h1>
+    <h1>Email: <?=$email?></h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Mes</th>
+                <th>Cuota</th>
+                <th>Saldo pendiente</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php for($i = 0; $i < count($pagos); $i++){ ?>
+                <tr>
+                    <td><?=$i;?></td>
+                    <td><?=$pagos[$i];?></td>
+                    <td><?=($capital - $pagos[$i]);?></td>
+                </tr>
+            <?=}?>
+        </tbody>
+    </table>
 </body>
 </html>

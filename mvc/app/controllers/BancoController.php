@@ -26,16 +26,29 @@ class BancoController{
     }
 
     public function enviar(){
-        if($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST['capital'], $_POST['interes'], $_POST['cuotas'])){
+        if($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST['capital'], $_POST['interes'], $_POST['cuotas'], $_POST['name'], $_POST['email'], $_POST['dui'])){
             $capital = $_POST['capital'];
             $i = $_POST['interes'];
             $coutas = $_POST['cuotas'];
+            $name = $_POST['name'];
+            $email = $_POST['email'];
+            $dui = $_POST['dui'];
 
-            $Pago = $capital * (($i*(1+$i)**$coutas) / ((1+$i)**$coutas -1));
+            //$Pago = $capital * (($i*(1+$i)**$coutas) / ((1+$i)**$coutas -1));
+
+            $pagos = [];
+
+            for($cuo = 1; $cuo < $coutas; $cuo++){
+                $pagos[-1] = $capital * ($i*(1+$i)**$cuo) / ((1+$i)**$cuo-1);
+            }
 
             return $this->view("EnviadosView", [
                 'capital'=>$capital,
-                'pago'=>$Pago,
+                'pago'=>$pagos,
+                'name'=>$name,
+                'email'=>$email,
+                'dui'=>$dui,
+                'cuotas'=>$coutas,
             ]);
         }else{
             echo "No se encontro.";
