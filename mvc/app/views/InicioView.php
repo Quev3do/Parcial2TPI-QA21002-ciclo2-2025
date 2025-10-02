@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Inicio</title>
 </head>
 <body>
-    <h1>Capital: <?=$capital?></h1>
-    <h2>Pago: <?=$pago?></h2>
+    <h4><a href="/banco">Banco</a></h4>
 </body>
 </html>

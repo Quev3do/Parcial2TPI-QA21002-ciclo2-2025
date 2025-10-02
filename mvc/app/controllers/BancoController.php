@@ -8,6 +8,10 @@ class BancoController{
         ]);
     }
 
+    public function inicio(){
+        return $this->view("InicioView");
+    }
+
     private function view($vista, $data=[]){
         extract($data);
         if(file_exists("../app/views/$vista.php")){
@@ -21,14 +25,17 @@ class BancoController{
         return "Hola";
     }
 
-    private function enviar(){
+    public function enviar(){
         if($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST['capital'], $_POST['interes'], $_POST['cuotas'])){
             $capital = $_POST['capital'];
-            //$interes = $_POST['interes'];
-            //$coutas = $_POST['cuotas'];
-            //echo '.'.$capital.'.'.$interes.'.'.$coutas;
+            $i = $_POST['interes'];
+            $coutas = $_POST['cuotas'];
+
+            $Pago = $capital * (($i*(1+$i)**$coutas) / ((1+$i)**$coutas -1));
+
             return $this->view("EnviadosView", [
                 'capital'=>$capital,
+                'pago'=>$Pago,
             ]);
         }else{
             echo "No se encontro.";
