@@ -20,5 +20,19 @@ class BancoController{
         }
         return "Hola";
     }
+
+    private function enviar(){
+        if($_SERVER["REQUEST_METHOD"] == "POST"  && isset($_POST['capital'], $_POST['interes'], $_POST['cuotas'])){
+            $capital = $_POST['capital'];
+            //$interes = $_POST['interes'];
+            //$coutas = $_POST['cuotas'];
+            //echo '.'.$capital.'.'.$interes.'.'.$coutas;
+            return $this->view("EnviadosView", [
+                'capital'=>$capital,
+            ]);
+        }else{
+            echo "No se encontro.";
+        }
+    }
 }
 ?>

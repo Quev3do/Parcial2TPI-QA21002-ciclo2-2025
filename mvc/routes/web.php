@@ -8,5 +8,7 @@ Route::get("/", function(){
 
 Route::get("/banco", [BancoController::class,"index"]);
 
+Route::post("/enviar", [BancoController::class,"enviar"]);
+
 Route::dispatch();
 ?>
